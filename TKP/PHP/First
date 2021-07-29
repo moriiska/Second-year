@@ -1,0 +1,33 @@
+<html>
+<head>
+<?php
+$titles = array("Динамическое формирование страниц", "Первый",
+"Второй", "Третий");
+?>
+</head>
+<body>
+<?php
+$file = "";
+$link = 0;
+if ($_GET['link'] == 1) { $file = "PHP-6_1.html"; }
+if ($_GET['link'] == 2) { $file = "PHP-6_2.html"; }
+if ($_GET['link'] == 3) { $file = "PHP-6_3.html"; }
+if ($file == "") { ?>
+<title><?=$titles[0]?></title>
+<h1>Выберите текст:</h1>
+<a href="PHP-6.php?link=1">Текст 1</a><br>
+<a href="PHP-6.php?link=2">Текст 2</a><br>
+<a href="PHP-6.php?link=3">Текст 3</a><?php }
+else {
+include($file); echo "<br><br>";
+if ($_GET['link']>1) {?> <a href="PHP-6.php?link=<?= $_GET['link'] -
+1?>">Предыдущая</a> <?php }
+else {?> <a>Предыдущая</a> <?php }
+echo " <a href='?'>На главную</a> ";
+if ($_GET['link']<3) {?> <a href="PHP-6.php?link=<?= $_GET['link'] +
+1?>">Следующая</a> <?php }
+else {?> <a>Следующая</a> <?php }
+}
+?>
+</body>
+</html>
