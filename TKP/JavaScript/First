@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title></title>
+ <input type="button" value="Добавить в стек" onclick="a.Push();">
+ <input type="button" value="Исключить из стека" onclick="a.Pop();">
+ <br/>Стек:
+ <span id="result"> </span>
+
+ <script type="text/javascript">
+/*
+ Создать программную модель стека, используя объектно-ориентированный подход
+*/
+class Stack {
+constructor() {
+ this.msize = 5;
+ this.h=-1;
+ this.arr = new Array(5);
+}
+Push() {
+if(this.h!=this.msize-1){
+ this.h++;
+ this.arr[this.h]=Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+ }
+ else
+ {
+ alert("Стек полон!");
+ }
+ document.getElementById('result').innerHTML = this.arr;}
+Pop() {
+ if(this.h>=0){
+ this.h--;
+ this.arr.pop();
+}
+else
+ {
+ alert("Стек пуст!");
+ }
+ document.getElementById('result').innerHTML = this.arr;
+}
+}
+var a = new Stack();
+ </script>
+</body>
