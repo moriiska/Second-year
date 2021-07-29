@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title></title>
+ <input type="button" value="Добавить в очередь" onclick="a.Push();">
+ <input type="button" value="Исключить из очереди" onclick="a.Pop();">
+ <br/>Очередь:
+ <span id="result"> </span>
+ <script type="text/javascript">
+/*
+ Создать программную модель циклической очереди, используя объектноориентированный подход
+*/
+class shift {
+constructor() {
+ this.msize = 5;
+ this.temp=0;
+ this.h1=-0;
+ this.arr = new Array(5);
+}
+Push() {
+ if(this.h1!= ((this.temp + 1) % this.msize)){
+ this.arr.unshift(Math.floor(Math.random() * (10 - 1 + 1)) + 1);
+ this.temp = (this.temp + 1) % this.msize;
+ }
+ else
+ {
+ this.arr[this.temp]=Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+ alert("Очередь полна!");
+ }
+ document.getElementById('result').innerHTML = this.arr;
+}
+Pop() {
+ if(this.h1!=this.temp){
+ this.h1++;
+ this.arr.shift();
+}
+else
+ {
+ this.arr.shift();
+ alert("Очередь пуста!");
+ }
+ document.getElementById('result').innerHTML = this.arr;
+}
+}
+var a = new shift();
+ </script>
+</body>
+</html>
