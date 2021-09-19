@@ -1,0 +1,53 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.concurrent.ThreadLocalRandom;
+
+
+public class StringLab {
+    public static void main (String [] args){
+        Date date = new Date();                                         //сегодняшняя дата
+
+        long Date = date.toInstant().toEpochMilli();        //Сегодняшняя дата в милисекундах
+
+        Date dateOne = new Date(date.toInstant().toEpochMilli());
+        System.out.println("Первая дата: "+dateOne);
+
+
+        Calendar dateTwo = new GregorianCalendar();
+        int yearNew = 2002;
+        int monthNew = 8;
+        int dayNew = 2;
+        dateTwo.set(Calendar.YEAR, yearNew);
+        dateTwo.set(Calendar.MONTH, monthNew);
+        dateTwo.set(Calendar.DAY_OF_MONTH, dayNew);
+
+
+        long i = dateTwo.toInstant().toEpochMilli();  //Вторая дата в милисекундах
+
+        Date dateLowerBorder = new Date(i);
+        System.out.println("\nВторая дата: "+dateLowerBorder);
+
+        long first = 0;
+        long second = 0;
+
+        if (Date > i) {
+            second = Date;
+            first = i;
+        } else {
+            second = i;
+            first = Date;
+        }
+
+        long rand = ThreadLocalRandom.current().nextLong(first, second); //Случайная дата
+
+
+        Date finalDate = new Date(rand);
+        System.out.println("\nСлучайная дата: "+finalDate);
+
+        String weekday = new SimpleDateFormat("EEEE").format(finalDate);
+        System.out.println("\nДень недели: "+weekday);
+
+    }
+}
